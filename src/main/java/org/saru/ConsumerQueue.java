@@ -19,5 +19,23 @@ public class ConsumerQueue {
         context.getLogger().info("Java Service Bus Queue trigger function executed.");
         context.getLogger().info(message);
     }
-}
 
+    // Main method for local message consumption
+//    public static void main(String[] args) throws Exception {
+//        String connectionString = "Endpoint=sb://queue1.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=taIKCr0AcgTtpokx8towDswNQzwXE5mlr+ASbMC9U8w="; // Set this env variable locally
+//        String queueName = "java-test1";
+//
+//        com.azure.messaging.servicebus.ServiceBusClientBuilder builder = new com.azure.messaging.servicebus.ServiceBusClientBuilder()
+//                .connectionString(connectionString);
+//        com.azure.messaging.servicebus.ServiceBusReceiverClient receiver = builder
+//                .receiver()
+//                .queueName(queueName)
+//                .buildClient();
+//
+//        System.out.println("Listening for messages on queue: " + queueName);
+//        receiver.receiveMessages(10).forEach(message -> {
+//            System.out.println("Received message: " + message.getBody().toString());
+//        });
+//        receiver.close();
+//    }
+}

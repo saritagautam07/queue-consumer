@@ -45,12 +45,20 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_32281B74D9BB4F3582C189E29408C719 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_61C463CF15FA4BAAB49EEDCC75F86767 }}
 
+      - name: 'Stage Azure Function Artifacts'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $functionAppPath = "build/azure-functions/queue-consumer"
+          if (Test-Path $functionAppPath) { Remove-Item -Recurse -Force $functionAppPath }
+          New-Item -ItemType Directory -Path $functionAppPath | Out-Null
+          Copy-Item -Path "build/libs/*.jar" -Destination $functionAppPath
+          Copy-Item -Path "build/resources/main/function.json" -Destination $functionAppPath
+
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
         id: fa
         with:
           app-name: 'queue-consumer'
           slot-name: 'Production'
-          package: '${{ env.PACKAGE_DIRECTORY }}'
-          respect-pom-xml: true
-          
+          package: './build/azure-functions/queue-consumer'
