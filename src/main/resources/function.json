@@ -1,0 +1,13 @@
+{
+  "scriptFile": "com-saru-consumer-queue.jar",
+  "bindings": [
+    {
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "name": "message",
+      "queueName": "java-test1",
+      "connection": "ServiceBusConnection"
+    }
+  ]
+}
+
