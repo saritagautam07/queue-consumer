@@ -1,5 +1,5 @@
 {
-  "scriptFile": "com-saru-consumer-queue.jar",
+  "scriptFile": "queue-consumer-1.0-SNAPSHOT.jar",
   "bindings": [
     {
       "type": "serviceBusTrigger",
@@ -10,4 +10,3 @@
     }
   ]
 }
-
